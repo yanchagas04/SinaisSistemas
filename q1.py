@@ -22,7 +22,7 @@ degx = np.linspace(MIN, MAX, num=functions.calculate_points(MIN, MAX))
 degy = np.zeros(functions.calculate_points(MIN, MAX))
 
 for i in range(MIN, MAX, T):
-    degy += functions.degrau(i, i + T, MIN, MAX, f1 if periodo_impar(i) else f2)
+    degy += functions.degrau(i, MIN, MAX, f1 if periodo_impar(i) else f2) - functions.degrau(i + T, MIN, MAX, f1 if periodo_impar(i) else f2)
 
 plt.plot(degx, degy)
 plt.show()

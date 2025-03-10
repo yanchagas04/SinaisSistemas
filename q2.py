@@ -10,9 +10,9 @@ A = 6
 def f1():
     return A
 
-y1 = functions.degrau(-1 * T/2, T/2, MIN, MAX, f1)
+y1 = functions.degrau(-1 * T/2, MIN, MAX, f1) - functions.degrau(T/2, MIN, MAX, f1)
 
-degx = np.linspace(-1, 4, num=functions.calculate_points(MIN, MAX))
+degx = np.linspace(MIN, MAX, num=functions.calculate_points(MIN, MAX))
 degy = y1
 
 plt.plot(degx, degy)
