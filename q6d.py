@@ -20,6 +20,10 @@ y2 = (functions.impulso(10, MIN, MAX) - functions.impulso(20, MIN, MAX)) * f2(x)
 y = y1 + y2
 
 plt.stem(x, y)
-plt.xlabel("n")
-plt.ylabel("x[n]")
+plt.xlabel("n", fontsize=12)
+plt.ylabel("x[n]", fontsize=12)
+plt.title("x[n] x n", fontsize=12)
+plt.grid(axis='both', color='lightgray', linestyle='--')
+plt.xticks(np.arange(MIN, MAX + 1, 1))
+plt.suptitle("Questão 6d", fontsize=16)
 plt.show()

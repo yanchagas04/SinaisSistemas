@@ -22,4 +22,9 @@ degx = np.linspace(-1, 4, num=functions.calculate_points(-1, 4))
 degy = y1 + y2 + y3
 
 plt.plot(degx, degy)
+plt.xlabel("t", fontsize=12)
+plt.ylabel("v(t)", fontsize=12)
+plt.title("v(t) x t", fontsize=12)
+plt.grid(axis='both', color='lightgray', linestyle='--')
+plt.suptitle("Questão 4", fontsize=16)
 plt.show()
