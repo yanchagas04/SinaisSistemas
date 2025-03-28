@@ -1,6 +1,12 @@
 from matplotlib import pyplot as plt
-import functions.functions as functions
+
 import numpy as np
+
+def calculate_points(min: float, max: float):
+    return (50 * (int(max) - int(min)))
+
+def degrau(t, a: float, funcao = lambda: 1) -> np.array:
+    return np.heaviside(t - a, 1) * funcao()
 
 MIN = 0
 MAX = 8
@@ -18,11 +24,11 @@ def f1():
 def f2():
     return -1 * A
 
-degx = np.linspace(MIN, MAX, num=functions.calculate_points(MIN, MAX))
-degy = np.zeros(functions.calculate_points(MIN, MAX))
+degx = np.linspace(MIN, MAX, num=calculate_points(MIN, MAX))
+degy = np.zeros(calculate_points(MIN, MAX))
 
 for i in range(MIN, MAX, T):
-    degy += functions.degrau(i, MIN, MAX, f1 if periodo_impar(i) else f2) - functions.degrau(i + T, MIN, MAX, f1 if periodo_impar(i) else f2)
+    degy += degrau(t=degx, a=i, funcao=f1 if periodo_impar(i) else f2) - degrau(t=degx, a=i + T, funcao=f1 if periodo_impar(i) else f2)
 
 plt.plot(degx, degy)
 plt.ylabel("v(t)", fontsize=12)

@@ -1,12 +1,19 @@
-import functions.functions as functions
+
 import numpy as np
 import matplotlib.pyplot as plt
+
+def calculate_points(min: float, max: float):
+    return (50 * (int(max) - int(min)))
+
+def degrau(t, a: float, funcao = lambda: 1) -> np.array:
+    return np.heaviside(t - a, 1) * funcao()
+
 
 MIN = -3
 MAX = 3
 T = 6
 
-degx = np.linspace(MIN, MAX, num=functions.calculate_points(MIN, MAX))
+degx = np.linspace(MIN, MAX, num=calculate_points(MIN, MAX))
 
 def f1():
     return (degx * (1/(T/2))) + 1
@@ -14,8 +21,8 @@ def f1():
 def f2():
     return (degx * (-1 * 1/(T/2))) + 1
 
-y1 = functions.degrau(-1 * T/2, MIN, MAX, f1) - functions.degrau(0, MIN, MAX, f1)
-y2 = functions.degrau(0, MIN, MAX, f2) - functions.degrau(T/2, MIN, MAX, f2)
+y1 = degrau(t=degx, a=-T/2, funcao=f1) - degrau(t=degx, a=0, funcao=f1)
+y2 = degrau(t=degx, a=0, funcao=f2) - degrau(t=degx, a=T/2, funcao=f2)
 
 degy = y1 + y2
 
