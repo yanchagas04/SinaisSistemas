@@ -1,4 +1,3 @@
-
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -39,12 +38,3 @@ plt.legend(fontsize=12)
 plt.tight_layout()
 
 plt.show()
-
-# plt.stem(x, y)
-# plt.xlabel("n", fontsize=12)
-# plt.ylabel("x[n]", fontsize=12)
-# plt.title("x[n] x n", fontsize=12)
-# plt.grid(axis='both', color='lightgray', linestyle='--')
-# plt.xticks(np.arange(MIN, MAX + 1, 1))
-# plt.suptitle("Questão 6a", fontsize=16)
-# plt.show()
