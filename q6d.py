@@ -6,22 +6,24 @@ import matplotlib.pyplot as plt
 def calculate_points(min: float, max: float):
     return (50 * (int(max) - int(min)))
 
-def impulso(a: int, min: int, max: int, funcao = lambda: 1) -> np.array:
-    return np.array([1 if n == a else 0 for n in np.arange(min, max + 1, 1)]) * funcao()
+def degrau_impulso(a: int, min: int, max: int, funcao = lambda: 1) -> np.array:
+    return np.array([1 if n >= a else 0 for n in np.arange(min, max + 1, 1)]) * funcao()
 
 MIN = 0
 MAX = 20
 
-def f1(x):
-    return x
+def f1(n):
+    return n
 
-def f2(x):
-    return pow(10, -0.3 * (x - 10))
+def f2(n):
+    return n
+
+def f3(n):
+    return pow(10, -0.3 * (n - 10))
+
 
 x = np.arange(MIN, MAX + 1, 1)
-y1 = (impulso(0, MIN, MAX) - impulso(10, MIN, MAX)) * f1(x)
-y2 = (impulso(10, MIN, MAX) - impulso(20, MIN, MAX)) * f2(x)
-y = y1 + y2
+y = (degrau_impulso(0, MIN, MAX) * x) + (degrau_impulso(10, MIN, MAX) * (f3(x) - f2(x))) - (degrau_impulso(20, MIN, MAX) * f3(x))
 
 plt.stem(x, y)
 plt.xlabel("n", fontsize=12)
